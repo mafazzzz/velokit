@@ -5,7 +5,10 @@ export default defineConfig({
   description: "The Ultimate Discord Bot Scaffolder",
   base: '/',
   themeConfig: {
-    logo: '/logo.svg',
+    logo: {
+      light: '/logo-light.svg',
+      dark: '/logo.svg'
+    },
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/getting-started' },
