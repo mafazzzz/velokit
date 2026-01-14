@@ -20,17 +20,18 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        run: pnpm --filter docs build
+        run: |
+          cd apps/docs
+          pnpm run build -- --outDir dist
 
       - name: Locate Build Output (Debug)
         run: |
           find . -name "index.html"
-          ls -R apps/docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/docs/docs/.vitepress/dist
+          path: apps/docs/dist
 
   deploy-pages:
     needs: deploy
