@@ -23,12 +23,12 @@ jobs:
         run: pnpm --filter docs build
 
       - name: List files (Debug)
-        run: ls -R apps/docs
+        run: find . -name "index.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/docs/dist
+          path: apps/docs/docs/.vitepress/dist
 
   deploy-pages:
     needs: deploy
