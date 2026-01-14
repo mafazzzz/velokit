@@ -6,7 +6,7 @@ console.log('Building VeloKit...');
 
 // 1. Run tsc
 try {
-    execSync('npx tsc', { stdio: 'inherit' });
+    execSync('tsc', { stdio: 'inherit' });
 } catch (e) {
     process.exit(1);
 }
