@@ -3,6 +3,7 @@ import { config } from 'dotenv';
 import { loadEvents } from './handlers/eventHandler';
 import { loadCommands } from './handlers/commandHandler';
 import { Logger } from './utils/logger';
+{{webBridgeImport}}
 
 config();
 
@@ -26,6 +27,8 @@ export class SploovClient extends Client {
         
         await loadEvents(this);
         await loadCommands(this);
+
+        {{webBridgeStart}}
 
         await this.login(process.env.DISCORD_TOKEN);
     }

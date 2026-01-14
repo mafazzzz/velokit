@@ -35,7 +35,28 @@ program
                 type: 'password',
                 name: 'botToken',
                 message: chalk.white('Discord Bot Token (optional):'),
-                mask: chalk.magenta('*')
+                mask: chalk.magenta('*'),
+                validate: async (input) => {
+                    if (!input) return true;
+                    const spin = ora('Validating token...').start();
+                    try {
+                        const response = await fetch('https://discord.com/api/v10/users/@me', {
+                            headers: { Authorization: `Bot ${input}` }
+                        });
+                        spin.stop();
+                        return response.ok || 'Invalid Discord Token provided.';
+                    } catch {
+                        spin.stop();
+                        return 'Could not validate token. Check your internet connection.';
+                    }
+                }
+            },
+            {
+                type: 'list',
+                name: 'language',
+                message: chalk.white('Project Language:'),
+                choices: ['TypeScript', 'JavaScript'],
+                default: 'TypeScript'
             },
             {
                 type: 'list',
@@ -106,8 +127,10 @@ program
                 choices: ['MongoDB (Mongoose)', 'PostgreSQL (Prisma)', 'None'],
                 default: 'MongoDB (Mongoose)'
             },
+            { type: 'confirm', name: 'webBridge', message: chalk.white('Include Web Bridge (Express)?'), default: false },
             { type: 'confirm', name: 'docker', message: chalk.white('Generate Docker Files?'), default: false }
         ]);
+        console.log('');
 
         // --- Final Summary ---
         console.log('\n');
@@ -115,11 +138,11 @@ program
             chalk.cyan.bold('      FORGE CONFIGURATION      '),
             chalk.gray('─'.repeat(46)),
             `${chalk.magenta('Name:')}    ${basics.projectName}`,
+            `${chalk.magenta('Lang:')}    ${basics.language}`,
             `${chalk.magenta('Soul:')}    ${core.soul.toUpperCase()}`,
-            `${chalk.magenta('DB:')}      ${infra.db}`,
-            `${chalk.magenta('Modules:')} ${extras.selectedExtras.length || 'None'}`
+            `${chalk.magenta('Bridge:')}  ${infra.webBridge ? 'ENABLED' : 'DISABLED'}`,
+            `${chalk.magenta('DB:')}      ${infra.db}`
         ]);
-        console.log('');
 
         const confirm = await inquirer.prompt([{ type: 'confirm', name: 'proceed', message: chalk.cyan.bold('Begin the forge?'), default: true }]);
         if (!confirm.proceed) process.exit(0);
@@ -152,7 +175,14 @@ program
             const extraIntents = (core.soul === 'music' ? 'GatewayIntentBits.GuildVoiceStates, ' : '') + 
                                 (extras.selectedExtras.includes('extra_mod') ? 'GatewayIntentBits.GuildMembers, ' : '');
 
-            const data = { projectName: basics.projectName, extraIntents, soul: core.soul.toUpperCase(), db: infra.db };
+            const data = { 
+                projectName: basics.projectName, 
+                extraIntents, 
+                soul: core.soul.toUpperCase(), 
+                db: infra.db,
+                webBridgeImport: infra.webBridge ? "import { startWebBridge } from './utils/webBridge';" : "",
+                webBridgeStart: infra.webBridge ? "startWebBridge(this);" : ""
+            };
             await processTemplate('package.json.template', data);
             await processTemplate('src/index.ts.template', data);
             await processTemplate('README.md.template', data);
@@ -182,7 +212,7 @@ program
             const installSpinner = ora(chalk.magenta(`Installing dependencies using ${basics.packageManager}...`)).start();
             
             try {
-                const { execa } = await import('execa');
+                const execa = (await import('execa')).default;
                 await execa(basics.packageManager, ['install'], { cwd: targetDir });
                 installSpinner.succeed(chalk.green('Dependencies Synchronized!'));
             } catch (err) {
