@@ -4,7 +4,6 @@ export default defineConfig({
   title: "VeloKit",
   description: "The Ultimate Discord Bot Scaffolder",
   base: '/velokit/',
-  outDir: '../dist',
   themeConfig: {
     logo: '/logo.svg',
     nav: [
