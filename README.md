@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="packages/cli/assets/banner.svg" width="100%" alt="VeloKit Banner" />
+<img src="https://raw.githubusercontent.com/sploov-xyz/velokit/master/packages/cli/assets/banner.svg" width="100%" alt="VeloKit Banner" />
 
 <br />
 
@@ -42,7 +42,7 @@ npx velokit
 <div align="center">
 
 <a href="https://discord.gg/sploov">
-  <img src="packages/cli/assets/support-banner.svg" width="100%" alt="Join Support Server" />
+  <img src="https://raw.githubusercontent.com/sploov-xyz/velokit/master/packages/cli/assets/support-banner.svg" width="100%" alt="Join Support Server" />
 </a>
 
 <br />
