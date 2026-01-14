@@ -1,5 +1,5 @@
 {
-  "name": "velokit",
+  "name": "velokit-monorepo",
   "version": "1.0.0",
   "description": "",
   "workspaces": ["packages/*", "apps/*"],
