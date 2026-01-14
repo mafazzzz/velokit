@@ -8,7 +8,8 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/getting-started' }
+      { text: 'Guide', link: '/guide/getting-started' },
+      { text: 'Changelog', link: '/changelog/changelog' }
     ],
     sidebar: [
       {
@@ -23,6 +24,14 @@ export default defineConfig({
         items: [
           { text: 'Music', link: '/guide/module-music' },
           { text: 'AI Integration', link: '/guide/module-ai' }
+        ]
+      },
+      {
+        text: 'Project',
+        items: [
+          { text: 'Changelog', link: '/changelog/changelog' },
+          { text: 'Privacy Policy', link: '/legal/privacy' },
+          { text: 'Terms of Service', link: '/legal/terms' }
         ]
       }
     ],
