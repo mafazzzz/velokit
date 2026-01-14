@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "VeloKit",
   description: "The Ultimate Discord Bot Scaffolder",
-  base: '/velokit/',
+  base: '/',
   themeConfig: {
     logo: '/logo.svg',
     nav: [

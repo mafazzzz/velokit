@@ -10,6 +10,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-00FFFF.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/Language-TypeScript-FF00FF.svg)](https://www.typescriptlang.org/)
 
+[Report Bug](https://github.com/sploov-xyz/velokit/issues) · [Request Feature](https://github.com/sploov-xyz/velokit/issues) · [Documentation](https://velokit.sploov.xyz)
+
 </div>
 
 ---
