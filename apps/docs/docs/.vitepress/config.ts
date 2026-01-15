@@ -19,7 +19,7 @@ export default defineConfig({
         text: 'Introduction',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'The 7-Phase Forge', link: '/guide/the-forge' }
+          { text: 'The 7-Phase Build', link: '/guide/the-build-process' }
         ]
       },
       {

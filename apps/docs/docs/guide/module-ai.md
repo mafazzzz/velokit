@@ -18,4 +18,4 @@ AI_API_KEY=your_key_here
 ```
 
 ## Expanding the AI
-The `src/commands/chat.ts` file includes a clean structure for handling prompts. You can easily extend this to support image generation or voice-to-text.
+The `src/commands/chat.ts` (or `.js`) file includes a clean structure for handling prompts. You can easily extend this to support image generation or voice-to-text.

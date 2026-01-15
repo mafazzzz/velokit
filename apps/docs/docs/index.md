@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: VeloKit
-  text: High-Velocity Discord Bot Engine
-  tagline: The ultimate scaffolding tool for modular, production-ready Discord bots.
+  text: High-Velocity Project Scaffolder
+  tagline: The ultimate scaffolding tool for production-ready Discord bots and APIs.
   image:
     src: /logo.svg
     alt: VeloKit Logo
@@ -18,7 +18,7 @@ hero:
 
 features:
   - title: ⚡ High Velocity
-    details: Forge a complete bot architecture in seconds using our 7-Phase interactive CLI.
+    details: Build a complete architecture in seconds using our 7-Phase interactive CLI.
   - title: 🧩 Modular Souls
     details: Inject Music, AI, or Moderation modules dynamically without touching boilerplate.
   - title: 🛡️ Production Grade

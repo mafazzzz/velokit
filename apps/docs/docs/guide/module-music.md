@@ -8,7 +8,7 @@ The VeloKit Music module is built for high-performance audio streaming using ind
 
 ## Included Features
 - **Auto-Connection:** The bot automatically connects to your configured nodes on startup.
-- **Basic Commands:** Includes a pre-written `play.ts` template.
+- **Basic Commands:** Includes a pre-written `play.ts` (or `.js`) template.
 - **Voice State Handling:** Pre-configured intents for voice channel tracking.
 
 ## Configuration
